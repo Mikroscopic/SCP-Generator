@@ -1,0 +1,127 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    margin: 0px;
+    background-color: rgb(39, 41, 44);
+}
+
+h1 {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 50px;
+    text-align: center;
+}
+
+h2 {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+}
+
+p {
+    font-size: 16px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: center;
+}
+
+a:link {
+    color: rgb(100, 180, 190);
+}
+
+a:visited {
+    color: rgb(60, 120, 125);
+}
+
+#content {
+    flex: 1 0 auto;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    min-height: 90px;
+    max-width: 700px;
+    background-color: rgb(241, 241, 224);
+    padding: 0px 10px;
+}
+
+.box p {
+    font-size: 20px;
+}
+
+.button-wrap {
+    justify-content: center;
+    margin: auto;
+    margin-top: 40px;
+    background-color: rgb(255, 140, 0);
+    height: 50px;
+    width: 250px;
+}
+
+.button-wrap:hover {
+    background-color: rgb(255, 194, 119);
+}
+
+.button-wrap:active {
+    background-color: rgb(255, 162, 119);
+}
+
+.button-wrap p {
+    padding: 12px 0;
+    font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+    font-size: 22px;
+}
+
+.button-wrap:active p {
+    color: rgb(116, 64, 40);
+}
+
+.list {
+
+    margin: auto;
+    margin-top: 40px;
+    padding: 5px 0px;
+    background-color: rgb(241, 241, 224);
+    max-width: 600px;
+}
+
+.list h2 {
+    border-bottom: 1px solid rgb(141, 165, 223);
+    color: rgb(60, 60, 60);
+}
+
+.list p p {
+    padding-left: 10px;
+    text-align: left;
+    border-bottom: 1px solid rgb(141, 165, 223);
+}
+
+.shadow {
+    box-shadow: 5px 5px 5px;
+}
+
+#footer {
+    flex-shrink: 0;
+    margin: auto;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+#footer p {
+    display: inline-block;
+    margin: 0px 5px;
+    color: rgb(138, 138, 138);
+    font-size: 12px;
+}
+
+#footer p.divider {
+    color: rgb(92, 92, 92);
+    font-size: 18px;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SCP Generator</title>
+    <link rel="stylesheet" href="scp_gen.css">
+</head>
+<body>
+    <div id="content">
+        <h1>SCP Generator</h1>
+        <div class="box shadow">
+            <p id="scp_idea">An error has occurred, please try again.</p>
+        </div>
+        
+        <div class="button-wrap shadow" onclick="new_scp()">
+        <p>Generate a new SCP</p>
+        </div>
+        
+        <div class="list shadow" id="list_container">
+            <h2>Recorded anomalies:</h2>
+            <p id="prev_ideas"></p>
+            <script src="scp_builder.js"></script>
+        </div>
+    </div>
+
+    <div id="footer">
+        <p>The SCP Foundation and SCP Foundation logo by <a href="http://www.scp-wiki.net/" target="_blank">scp-wiki.net</a></p>
+        <p class="divider">|</p>
+        <p>Content of this page is licensed under a <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank">Creative Commons Attribution-ShareAlike 3.0 License.</a></p>
+        <p class="divider">|</p>
+        <p>Follow this project at <a>(link coming soon)</a></p>
+    </div>
+</body>
+</html>
