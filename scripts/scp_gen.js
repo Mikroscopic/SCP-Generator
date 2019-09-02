@@ -1,6 +1,7 @@
 'use strict';
 
 let scp_list = [];
+let listshow = 0;
 
 function new_scp() {
 	// Call back end
@@ -15,10 +16,12 @@ function new_scp() {
 				node.appendChild(textNode);
 				document.getElementById("prev_ideas").appendChild(node);
 			}
-			document.getElementById("list_container").style.display = "block";
+			
+			if (listshow)
+				document.getElementById("list_container").style.display = "block";
+			listshow = 1;
 
 			let idea = this.responseText;
-			console.log(idea);
 
 			document.getElementById('scp_idea').innerHTML = idea;
 			scp_list.unshift(idea);
