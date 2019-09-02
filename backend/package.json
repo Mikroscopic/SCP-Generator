@@ -1,0 +1,14 @@
+{
+  "name": "scp-generator",
+  "version": "1.0.0",
+  "description": "Hi, I'm Mike, a beginner programmer and web developer. I'm creating this project to help practice my skills in HTML and JavaScript. I'm a fan of the SCP community and I thought it would be a fun idea. Feel free to suggest improvements or additions!",
+  "main": "scp_builder.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
