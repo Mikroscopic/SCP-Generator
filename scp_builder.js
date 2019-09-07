@@ -57,6 +57,12 @@ function rand_el(words) {
 	return words[Math.floor(Math.random() * words.length)];
 }
 
+function rand_id(words) {
+	let index = Math.floor(Math.random() * words.length)
+	let word = words[index];
+	return [index, word];
+}
+
 function randByTag(tag, plural) {
 	let validWords = []
 	
@@ -84,11 +90,11 @@ const adjectives = [
 	'attractive',
 	'blind',
 	'bouncy',
-	'burning',
 	'cold',
 	'confused',
 	'dead',
 	'elastic',
+	'flammable',
 	'gelatinous',
 	'happy',
 	'heavy',
@@ -122,6 +128,7 @@ const locations = [
 	'France',
 	'Germany',
 	'Greece',
+	'Hawaii',
 	'India',
 	'Indonesia',
 	'Italy',
@@ -974,72 +981,72 @@ function rand_attrib(tag, plural) {
 	let w;
 	switch (tag) {
 		case 'act':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'turn' : 'turns'} ${randByTag('person', 1)} into ${randByTag('object', 1)}`,
 				`which ${(plural) ? 'summon' : 'summons'} ${get_article(w = rand_el(adjectives)) + w} ${randByTag('humanoid', 0)}`,
 				`which ${(plural) ? 'summon' : 'summons'} a swarm of ${randByTag('bug', 1)}`,
 				`which ${(plural) ? 'open' : 'opens'} a portal to ${get_article(w = randByTag('place', 0)) + w}`
 			]);
 		case 'airborne':
-			return rand_el([
+			return rand_id([
 				`which never ${(plural) ? 'land' : 'lands'}`,
 				`which ${(plural) ? 'fly' : 'flies'} upside down`,
 				`which ${(plural) ? 'fly' : 'flies'} ${Math.floor(Math.random() * 201) + 200} km above sea level`,
 				`which can fly into space`
 			]);
 		case 'alive':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'die if they come' : 'dies if it comes'} into contact with ${randByTag('object', 1)}`,
 				`which ${(plural) ? 'are' : 'is'} undead`,
 				`which ${(plural) ? 'are' : 'is'} only alive at night`,
 				`which cannot die`
 			]);
 		case 'animal':
-			return rand_el([
+			return rand_id([
 				`which must be fed ${randByTag('object', 1)}`,
 				`which ${(plural) ? 'are ' + randByTag('job', 1) : 'is ' + get_article(w = randByTag('job', 0)) + w}`,
 				`which ${(plural) ? 'speak' : 'speaks'} with ${get_article(w = rand_el(nationalities)) + w} accent`,
 				`which ${(plural) ? 'have ' + randByTag('object', 1) + ' for hearts' : 
-					'has ' + get_article(w = randByTag('object', 0)) + ' for a heart'}`,
+					'has ' + get_article(w = randByTag('object', 0)) + w + ' for a heart'}`,
 				`which ${(plural) ? 'have ' + randByTag('object', 1) + ' for brains' : 
-					'has ' + get_article(w = randByTag('object', 0)) + ' for a brain'}`,
+					'has ' + get_article(w = randByTag('object', 0)) + w + ' for a brain'}`,
 				`which ${(plural) ? 'have' : 'has'} no mouth`
 			]);
 		case 'audio':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'make anyone who hears them' : 'makes anyone who hears it'} become ${rand_el(adjectives)}`,
 				`which ${(plural) ? 'turn anyone who hears them' : 'turns anyone who hears it'} into ${get_article(w = randByTag('object', 0)) + w}`,
 				`which ${(plural) ? 'are' : 'is'} always heard at the same volume`,
 				`which always ${(plural) ? 'echo' : 'echoes'}`
 			]);
 		case 'biome':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'are' : 'is'} inhabited exclusively by ${randByTag('animal', 1)}`,
 				`which ${(plural) ? 'stay' : 'stays'} at a constant ${Math.floor(Math.random() * 101) -20} degrees Celsius`,
 				`which ${(plural) ? 'experience' : 'experiences'} unusual levels of rainfall`
 			]);
 		case 'bug':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'have' : 'has'} glowing pincers`,
 				`which ${(plural) ? 'have' : 'has'} wings made of ${randByTag('substance', 0)}`,
 				`which ${(plural) ? 'swarm' : 'swarms'} in the shape of ${get_article(w = randByTag('object', 0)) + w}`
 			]);
 		case 'building':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'have' : 'has'} an infinite number of rooms`,
 				`which ${(plural) ? 'have' : 'has'} no exits`,
 				`which ${(plural) ? 'are' : 'is'} ${Math.floor(Math.random() * 1451) + 50} stories tall`,
 				`which spontaneously ${(plural) ? 'change their' : 'changes its'} floorplan`
 			]);
 		case 'clothing':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'turn' : 'turns'} the wearer into ${get_article(w = randByTag('animal', 0)) + w}`,
 				`which ${(plural) ? 'allow' : 'allows'} the wearer to fly`,
 				`which ${(plural) ? 'make' : 'makes'} the wearer invincible`,
 				`which ${(plural) ? 'make' : 'makes'} the wearer invisible`,
 			]);
 		case 'concept':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'make' : 'makes'} ${randByTag('person', 1)} become increasingly ${rand_el(adjectives)}`,
 				`which ${(plural) ? 'make' : 'makes'} ${randByTag('person', 1)} dance`,
 				`which ${(plural) ? 'make' : 'makes'} ${randByTag('person', 1)} go crazy`,
@@ -1073,13 +1080,13 @@ function rand_attrib(tag, plural) {
 				`which everyone perceives differently`
 			]);
 		case 'container':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'each contain' : 'contains'} ${get_article(w = randByTag('large', 0)) + w}`,
 				`which ${(plural) ? 'are' : 'is'} unable to hold ${randByTag('substance', 0)}`,
 				`which ${(plural) ? 'consume' : 'consumes'} anything put inside`
 			]);
 		case 'disease':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'turn' : 'turns'} those affected into ${randByTag('object', 1)}`,
 				`which ${(plural) ? 'make' : 'makes'} people allergic to ${randByTag('object', 1)}`,
 				`which ${(plural) ? 'cause' : 'causes'} people to believe they are ${randByTag('object', 1)}`,
@@ -1087,20 +1094,20 @@ function rand_attrib(tag, plural) {
 				`which ${(plural) ? 'clone' : 'clones'} the affected person`
 			]);
 		case 'drink':
-			return rand_el([
+			return rand_id([
 				`which automatically ${(plural) ? 'replenish themselves' : 'replenishes itself'}`,
 				`which ${(plural) ? 'make' : 'makes'} people incredibly strong`,
 				`which ${(plural) ? 'make' : 'makes'} people taller`,
 				`which ${(plural) ? 'make' : 'makes'} people faster`
 			]);
 		case 'event':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'happen' : 'happens'} every ${Math.floor(Math.random() * 11) + 2} years`,
 				`which ${(plural) ? 'happen' : 'happens'} every ${Math.floor(Math.random() * 31) + 10} minutes`,
 				`which did not happen, despite multiple eyewitness accounts`
 			]);
 		case 'food':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'taste like ' + randByTag('object', 1) : 
 					'tastes like ' + get_article(w = randByTag('object', 0)) + w}`,
 				`which ${(plural) ? 'contain' : 'contains'} ${(Math.floor(Math.random() * 20) + 5) * 1000} calories`,
@@ -1108,36 +1115,36 @@ function rand_attrib(tag, plural) {
 				`which ${(plural) ? 'expand' : 'expands'} when consumed`
 			]);
 		case 'furniture':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'explode' : 'explodes'} when placed in any room containing ${get_article(w = randByTag('furniture', 0)) + w}`,
 				`which ${(plural) ? 'teleport' : 'teleports'} to different rooms`,
 				`which ${(plural) ? 'resemble' : 'resembles'} human anatomy`
 			]);
 		case 'humanoid':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'have' : 'has'} ${Math.floor(Math.random() * 10) + 3} eyes`,
 				`which ${(plural) ? 'have' : 'has'} ${Math.floor(Math.random() * 10) + 3} arms`,
 				`which can shapeshift`
 			]);
 		case 'instrument':
-			return rand_el([
+			return rand_id([
 				`which only ${(plural) ? 'play' : 'plays'} "Three Blind Mice"`,
 				`which always ${(plural) ? 'play' : 'plays'} at the same volume`,
 				`which gradually ${(plural) ? 'increase' : 'increases'} in pitch as ${(plural) ? 'they are' : 'it is'} played`
 			]);
 		case 'job':
-			return rand_el([
+			return rand_id([
 				`who ${(plural) ? 'get' : 'gets'} paid in ${randByTag('object', 1)}`,
 				`who ${(plural) ? 'use' : 'uses'} ${randByTag('tool', 1)} to do their job`,
 				`who ${(plural) ? 'work' : 'works'} for the Chaos Insurgency`
 			]);
 		case 'large':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'weigh' : 'weighs'} ${Math.round(Math.random() * 5100 + 500) / 100} grams`,
 				`which ${(plural) ? 'are' : 'is'} extremely tiny`
 			]);
 		case 'large_place':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'are' : 'is'} completely devoid of water`,
 				`where a population of sentient ${randByTag('object', 1)} rule`,
 				`where people are terrorized by giant ${randByTag('object', 1)}`,
@@ -1145,19 +1152,19 @@ function rand_attrib(tag, plural) {
 				`which ${(plural) ? 'are' : 'is'} contained within ${get_article(w = randByTag('container', 0)) + w}`
 			]);
 		case 'liquid':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'are' : 'is'} constantly boiling`,
 				`which always ${(plural) ? 'flow' : 'flows'} east`,
 				`which ${(plural) ? 'evaporate' : 'evaporates'} when poured into ${randByTag('container', 1)}`
 			]);
 		case 'machine':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'are' : 'is'} powered by ${randByTag('object', 1)}`,
 				`which only ${(plural) ? 'function' : 'functions'} in ${randByTag('place', 1)}`,
 				`which must be repaired with ${get_article(w = randByTag('tool', 0)) + w}`
 			]);
 		case 'object':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'are' : 'is'} made of ${randByTag('substance', 0)}`,
 				`which ${(plural) ? 'look like ' + randByTag('object', 1) : 
 					'looks like ' + get_article(w = randByTag('object', 0)) + w}`,
@@ -1202,20 +1209,22 @@ function rand_attrib(tag, plural) {
 				`which can talk`
 			]);
 		case 'openable':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'emit' : 'emits'} a screaming sound when opened`,
 				`which cannot be opened`
 			]);
 		case 'participatory':
-			return rand_el([
-				`which ${(plural) ? 'turn' : 'turns'} everyone involved into ${randByTag('object', 1)}`
+			return rand_id([
+				`which ${(plural) ? 'turn' : 'turns'} everyone involved into ${randByTag('object', 1)}`,
+				`in which all the participants are ${randByTag('person', 1)}`
 			]);
 		case 'passageway':
-			return rand_el([
-				`which ${(plural) ? 'transport' : 'transports'} people to ${get_article(w = randByTag('place', 0)) + w}`
+			return rand_id([
+				`which ${(plural) ? 'transport' : 'transports'} people to ${get_article(w = randByTag('place', 0)) + w}`,
+				`which ${(plural) ? 'lead' : 'leads'} to ${rand_el(locations)}`
 			]);
 		case 'person':
-			return rand_el([
+			return rand_id([
 				`who ${(plural) ? 'are' : 'is'} made of ${randByTag('substance', 0)}`,
 				`who ${(plural) ? 'are' : 'is'} part ${randByTag('object', 0)}`,
 				`who ${(plural) ? 'are' : 'is'} abnormally ${rand_el(adjectives)}`,
@@ -1266,12 +1275,13 @@ function rand_attrib(tag, plural) {
 				`who can fly`
 			]);
 		case 'person_group':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'are' : 'is'} made up of ${randByTag('person', 1)}`,
-				`which ${(plural) ? 'are' : 'is'} made up of ${randByTag('animal', 1)}`
+				`which ${(plural) ? 'are' : 'is'} made up of ${randByTag('animal', 1)}`,
+				`which ${(plural) ? 'have' : 'has'} ${Math.floor(Math.random() * 2481) + 20} members`
 			]);
 		case 'place':
-			return rand_el([
+			return rand_id([
 				`where gravity is reversed, but only for ${randByTag('object', 1)}`,
 				`where gravity is reversed`,
 				`where information can only be recorded via ${randByTag('concept', 1)}`,
@@ -1286,8 +1296,8 @@ function rand_attrib(tag, plural) {
 				`where everyone is transformed into ${get_article(w = randByTag('object', 0)) + w}`,
 				`where everyone is ${get_article(w = randByTag('person', 0)) + w}`,
 				`where everything is abnormally ${rand_el(adjectives)}`,
-				`where everything is ${Math.floor(Math.random()*4) + 2} times bigger`,
-				`where everything is ${Math.floor(Math.random()*4) + 2} times smaller`,
+				`where everything is ${Math.floor(Math.random() * 4) + 2} times bigger`,
+				`where everything is ${Math.floor(Math.random() * 4) + 2} times smaller`,
 				`where there are absolutely no ${randByTag('object', 1)}`,
 				`where there is an abundance of ${randByTag('object', 1)}`,
 				`where everyone wears ${randByTag('object', 1)} on their head`,
@@ -1309,49 +1319,55 @@ function rand_attrib(tag, plural) {
 				`time is slower`
 			]);
 		case 'plant':
-			return rand_el([
+			return rand_id([
 				`which only ${(plural) ? 'grow' : 'grows'} in ${randByTag('substance', 0)}`,
 				`which ${(plural) ? 'grow' : 'grows'} ${randByTag('object', 1)}`
 			]);
 		case 'property':
-			return rand_el([
-				`which ${(plural) ? 'are' : 'is'} owned by ${get_article(w = randByTag('person', 0)) + w}`
+			return rand_id([
+				`which ${(plural) ? 'are' : 'is'} owned by ${get_article(w = randByTag('person', 0)) + w}`,
+				`which ${(plural) ? 'are' : 'is'} being leased to ${get_article(w = randByTag('person', 0)) + w}`
 			]);
 		case 'residence':
-			return rand_el([
-				`where ${(plural) ? randByTag('person', 1) + ' live' : get_article(w = randByTag('person', 0)) + w + ' lives'}`
+			return rand_id([
+				`where ${(plural) ? randByTag('person', 1) + ' live' : get_article(w = randByTag('person', 0)) + w + ' lives'}`,
+				`where all the ${randByTag('furniture', 1)} are made of ${randByTag('substance', 0)}`
 			]);
 		case 'restaurant':
-			return rand_el([
+			return rand_id([
 				`which only ${(plural) ? 'serve' : 'serves'} ${randByTag('food', 1)}`,
 				`where all the staff are ${randByTag('object', 1)}`
 			]);
 		case 'small':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'are' : 'is'} abnormally large`,
 				`which ${(plural) ? 'come' : 'comes'} back when thrown`,
 				`which ${(plural) ? 'emit' : 'emits'} light when held`
 			]);
 		case 'small_place':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'have their' : 'has its'} own time zone`,
 				`which can fit ${Math.floor(Math.random() * 300) + 100} people`
 			]);
 		case 'sp_amus_park':
-			return rand_el([
-				`where all the rides are made of ${randByTag('substance', 0)}`
+			return rand_id([
+				`where all the rides are made of ${randByTag('substance', 0)}`,
+				`where all the rides turn people into ${randByTag('object', 1)}`
 			]);
 		case 'sp_zoo':
-			return rand_el([
-				`where all the animals are ${randByTag('animal', 1)}`
+			return rand_id([
+				`where all the animals are ${randByTag('animal', 1)}`,
+				`which ${(plural) ? 'have' : 'has'} ${Math.floor(Math.random() * 9001) + 1000} animals`
 			]);
 		case 'store':
-			return rand_el([
-				`which only ${(plural) ? 'sell' : 'sells'} ${randByTag('object', 1)}`
+			return rand_id([
+				`which only ${(plural) ? 'sell' : 'sells'} ${randByTag('object', 1)}`,
+				`where the ${(plural) ? 'managers are ' + randByTag('person', 1) : 'manager is ' + get_article(w = randByTag('person', 0)) + w}`,
+				`where the customers are all ${randByTag('object', 1)}`
 			]);
 		case 'substance':
-			return rand_el([
-				`which is indestructable`,
+			return rand_id([
+				`which is indestructible`,
 				`which has an odd chemical composition`,
 				`which is highly radioactive`,
 				`which has an odd smell`,
@@ -1359,43 +1375,47 @@ function rand_attrib(tag, plural) {
 				`which is incredibly dense`
 			]);
 		case 'surface':
-			return rand_el([
-				`which ${(plural) ? 'turn' : 'turns'} anything placed on ${(plural) ? 'them' : 'it'} into ${get_article(w = randByTag('object', 0)) + w}`
+			return rand_id([
+				`which ${(plural) ? 'turn' : 'turns'} anything placed on ${(plural) ? 'them' : 'it'} into ${get_article(w = randByTag('object', 0)) + w}`,
+				`which ${(plural) ? 'become' : 'becomes'} uneven when unobserved`
 			]);
 		case 'tool':
-			return rand_el([
+			return rand_id([
 				`which only ${(plural) ? 'work' : 'works'} in ${randByTag('place', 1)}`,
 				`which can only be used once`
 			]);
 		case 'toy':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'make' : 'makes'} people sad when played with`,
 				`which cannot stop being played with`
 			]);
 		case 'visible':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'cause' : 'causes'} observers to cry`,
 				`which ${(plural) ? 'disappear' : 'disappears'} when observed`,
 				`which ${(plural) ? 'kill' : 'kills'} those who look at ${(plural) ? 'them' : 'it'}`
 			]);
 		case 'weapon':
-			return rand_el([
+			return rand_id([
 				`which ${(plural) ? 'set their targets' : 'sets its target'} on fire`,
 				`which ${(plural) ? 'attack on their' : 'attacks on its'} own`,
 				`which can only damage ${randByTag('person', 1)}`
 			]);
 		case 'words':
-			return rand_el([
+			return rand_id([
 				`which can only be spoken by ${randByTag('person', 1)}`,
 				`which ${(plural) ? 'cause' : 'causes'} a flash of lightning when spoken`
 			]);
 		case 'writing':
-			return rand_el([
+			return rand_id([
 				`which can only be read by ${randByTag('person', 1)}`,
 				`which ${(plural) ? 'tell' : 'tells'} the future`
 			]);
 		default:
-			return `err`;
+			return rand_id([
+				`err`,
+				`err`
+			]);
 	}
 }
 
@@ -1420,18 +1440,24 @@ function get_new_scp() {
 	scp_item = parse_specials(scp_item);
 	
 	// Select a random tag from the word
-	let tag = rand_el(subjects[subjectList[scp_id]]);
+	let tag1 = rand_el(subjects[subjectList[scp_id]]);
 
-	// DEBUG
-	//console.log(subjectList[scp_id] + ', ' + subjectPlurals[scp_id] + ' > ' + tag);
+	// Select a random atrribute to describe the item
+	let attrib1 = rand_attrib(tag1, plural);
 	
 	// Build the description
-	let desc = ((plural) ? '' : get_article(scp_item)) + scp_item + ' ' + rand_attrib(tag, plural);
+	let desc = ((plural) ? '' : get_article(scp_item)) + scp_item + ' ' + attrib1[1];
 
 	// Sometimes include second discription
 	if (Math.random() > 0.6) {
-		tag = rand_el(subjects[subjectList[scp_id]]);
-		desc = desc + ' and ' + rand_attrib(tag, plural);
+		let tag2 = rand_el(subjects[subjectList[scp_id]]);
+		let attrib2 = rand_attrib(tag2, plural);
+
+		// Prevent the same attribute from being used twice
+		while(tag1 == tag2 && attrib1[0] == attrib2[0])
+			attrib2 = rand_attrib(tag2, plural);
+
+		desc = desc + ' and ' + attrib2[1];
 	}
 
 	return capitalize(desc);

@@ -63,12 +63,15 @@ a:visited {
 }
 
 .button-wrap {
-    justify-content: center;
+	display: block;
+	justify-content: center;
     margin: auto;
     margin-top: 40px;
-    background-color: rgb(255, 140, 0);
+	background-color: rgb(255, 140, 0);
+	border: none;
     height: 50px;
-    width: 250px;
+	width: 250px;
+	cursor: pointer;
 }
 
 .button-wrap:hover {
@@ -80,7 +83,8 @@ a:visited {
 }
 
 .button-wrap p {
-    padding: 12px 0;
+	margin: 0;
+	padding: 12px 0;
     font-family: 'Franklin Gothic Medium', Arial, sans-serif;
     font-size: 22px;
 }
